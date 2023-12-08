@@ -1,0 +1,19 @@
+<div >
+  <div *ngIf="!loading">
+  <app-post
+  [post]="post"
+  control="true"
+  ></app-post>
+
+  </div>
+
+  <app-loading *ngIf="loading"></app-loading>
+
+</div>
+
+
+
+
+
+
+

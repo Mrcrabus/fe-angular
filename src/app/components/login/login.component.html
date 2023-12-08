@@ -1,0 +1,53 @@
+<div>
+  <h1 class="text-center font-bold text-2xl text-black">Authorization</h1>
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <input
+      class="border w-full py-2 rounded px-4 mb-2 text-black"
+      type="text"
+      placeholder="Enter your email"
+      formControlName="email"
+      appFocus
+    >
+    <div
+      *ngIf="email.invalid && email.touched"
+      class="text-red-600 font-medium mb-2"
+    >
+      <div *ngIf="email.errors?.['required']">
+        Email is required.
+      </div>
+      <div *ngIf="email.errors?.['minlength']">
+        Email must be at least {{email.errors?.minlength.requiredLength}} characters long.
+      </div>
+      <div *ngIf="email.errors?.['email']">
+        Please enter valid email.
+      </div>
+    </div>
+
+    <input
+      class="border w-full py-2 rounded px-4 mb-2 text-black"
+      type="text"
+      placeholder="Enter your password"
+      formControlName="password"
+    >
+    <div
+      *ngIf="password.invalid && password.touched"
+      class="text-red-600 font-medium mb-2"
+    >
+      <div *ngIf="password.errors?.['required']">
+        Password is required.
+      </div>
+      <div *ngIf="password.errors?.['minlength']">
+        Email must be at least {{password.errors?.minlength.requiredLength}} characters long.
+      </div>
+
+    </div>
+    <button
+      [disabled]="form.invalid"
+      class="w-full bg-blue-600 rounded border shadow text-white text-lg hover:bg-blue-500"
+      type="submit"
+
+    >Enter
+    </button>
+
+  </form>
+</div>

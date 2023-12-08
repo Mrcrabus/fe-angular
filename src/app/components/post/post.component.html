@@ -1,0 +1,15 @@
+<div class="py-4 px-6 border rounded flex items-center flex-col mb-2">
+  <div class="mb-2 text-2xl text-center w-full"><a routerLink="/posts/{{post.id}}"
+                                                   class="rounded px-2  hover:bg-gray-100">{{post.title}}</a></div>
+  <img src="{{baseUrl}}/posts/image{{post.imageUrl}}" alt="post-image">
+  <p class="w-full">Description: {{post.description  | lowercase}}</p>
+  <div class="flex justify-between items-center w-full">
+    <p>Author: <a routerLink="/{{post.authorId}}" class="font-bold hover:underline">{{post.authorName | titlecase}}</a>
+    </p>
+    <div *ngIf="isOwner$.getValue() && control" class="flex gap-3">
+      <button class="bg-gray-500 px-2 py-1 rounded border text-white">Edit</button>
+      <button (click)="openModal()" class="bg-gray-500 px-2 py-1 rounded border text-white">Delete</button>
+    </div>
+  </div>
+
+</div>

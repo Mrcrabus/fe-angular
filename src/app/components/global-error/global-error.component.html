@@ -1,0 +1,10 @@
+<div
+  *ngIf="errorService.error$ | async as error"
+  class="h-[50px] flex justify-center items-center bg-red-600 text-white relative">
+  <p class="m-5">{{error}}</p>
+
+  <button
+    (click)="errorService.clear()"
+  >&times;
+  </button>
+</div>

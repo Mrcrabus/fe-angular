@@ -1,10 +1,20 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {TokenService} from './services/token.service';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'my-app',
+  templateUrl: 'app.component.html'
 })
-export class AppComponent {
-  title = 'fe-angular';
+export class AppComponent implements OnInit {
+
+  constructor(private readonly tokenService: TokenService) {
+  }
+
+  public ngOnInit(): void {
+    if(this.tokenService.AccessToken) {
+      this.tokenService.refreshTokens().subscribe();
+    }
+  }
+
+
 }

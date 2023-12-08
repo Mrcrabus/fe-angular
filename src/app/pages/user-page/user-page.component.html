@@ -1,0 +1,26 @@
+<app-loading *ngIf="loading" ></app-loading>
+
+<div class="flex flex-row justify-between gap-2" *ngIf="postService.posts && !loading">
+  <div>
+    <app-post
+      class="max-w-lg"
+      *ngFor="let product of postService.posts"
+      [post]="product"
+    ></app-post>
+  </div>
+
+  <div class="flex flex-col items-center gap-2" *ngIf="!postService.posts.length ">
+    <h1
+      class="text-center text-2xl"
+
+    >There are no posts yet. </h1>
+  </div>
+
+  <div class="sticky top-2.5 -z-10 border shadow p-2 rounded max-w-xs max-h-[320px]" *ngIf="!loading">
+    <p class="font-bold text-2xl text-center">{{user.userName}}</p>
+    <img class="rounded border"
+         src="https://www.exscribe.com/wp-content/uploads/2021/08/placeholder-image-person-jpg.jpg" alt="avatar
+">
+    <p>Posts: {{postService.posts.length}}</p>
+  </div>
+</div>

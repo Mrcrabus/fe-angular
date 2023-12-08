@@ -1,0 +1,25 @@
+<h1 class="font-bold mb-2 text-center">{{title | titlecase}}</h1>
+<input
+  type="text"
+  class="mb-2 border py-2 px-4 w-full rounded"
+  placeholder="Search post.."
+  [(ngModel)]="term"
+>
+<app-loading *ngIf="loading" ></app-loading>
+
+<div *ngIf="postService.posts">
+  <app-post
+    *ngFor="let product of postService.posts | filterProducts: term, let i = index"
+    [post]="product"
+  ></app-post>
+  <h1 class="text-center text-2xl" *ngIf="!postService.posts.length && !loading">There are no posts yet.</h1>
+</div>
+
+
+
+<button *ngIf="userName && !(modalService.isVisible$ | async)"
+        class="rounded-full bg-gray-500 text-white fixed right-5 bottom-5 py-2 px-4"
+        (click)="openModal()"
+>+
+</button>
+

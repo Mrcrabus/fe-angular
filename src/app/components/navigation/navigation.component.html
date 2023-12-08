@@ -1,0 +1,26 @@
+<nav class="z-10 px-5 h-[50px] flex justify-between items-center text-white bg-gray-500">
+  <h1 class="font-bold"><a routerLink="/">Angular App</a></h1>
+
+  <span>
+    <a routerLink="/about" class="mr-2">About</a>
+
+    <span class="cursor-auto" *ngIf="userName">
+      <span> Hello, <a routerLink="/{{userId}}" class="underline">{{userName | titlecase}}</a></span>
+      <button (click)="logout()" class="ml-2">Logout</button>
+    </span>
+
+    <span *ngIf="!userName">
+      <button (click)="openModalLogin()" class="mr-2">Login</button>
+      <button (click)="openModalSignup()">Sign Up</button>
+    </span>
+
+    <app-modal *ngIf="modalService.isVisible$ | async">
+        <app-signup *ngIf="modalService.checkModalType(ModalType.signUp)"></app-signup>
+        <app-login *ngIf="modalService.checkModalType(ModalType.login)"></app-login>
+        <app-create-post *ngIf="modalService.checkModalType(ModalType.createPost)"></app-create-post>
+        <app-confirm *ngIf="modalService.checkModalType(ModalType.deletePost)" title="Are your sure?" ></app-confirm>
+
+    </app-modal>
+
+  </span>
+</nav>
