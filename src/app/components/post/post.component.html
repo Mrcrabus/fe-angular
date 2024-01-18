@@ -1,6 +1,25 @@
 <div class="py-4 px-6 border rounded flex items-center flex-col mb-2">
-  <div class="mb-2 text-2xl text-center w-full"><a routerLink="/posts/{{post.id}}"
-                                                   class="rounded px-2  hover:bg-gray-100">{{post.title}}</a></div>
+  <div class="mb-2 text-2xl text-center w-full">
+    <a *ngIf="!control" routerLink="/posts/{{post.id}}" class="rounded px-2  hover:bg-gray-100">
+      {{post.title}}
+    </a>
+    <ng-container *ngIf="!isEditing; else editMode">
+      <h3 (click)="startEditing()" class="rounded px-2 center">
+        {{ post.title }}
+      </h3>
+    </ng-container>
+
+    <ng-template #editMode>
+      <input
+        appFocus
+        [(ngModel)]="editedTitle"
+        (blur)="stopEditing()"
+        (keyup.enter)="stopEditing()"
+        class="rounded px-2 hover:bg-gray-100"
+      />
+    </ng-template>
+
+  </div>
   <img src="{{baseUrl}}/posts/image{{post.imageUrl}}" alt="post-image">
   <p class="w-full">Description: {{post.description  | lowercase}}</p>
   <div class="flex justify-between items-center w-full">

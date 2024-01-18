@@ -26,8 +26,8 @@ import {NgOptimizedImage} from '@angular/common';
 import {PostPageComponent} from './pages/post-page/post-page.component';
 import {NotFoundPageComponent} from './pages/not-found-page/not-found-page.component';
 import {UserPageComponent} from './pages/user-page/user-page.component';
-import { LoadingComponent } from './components/loading/loading.component';
-import { ConfirmComponent } from './components/confirm/confirm.component';
+import {LoadingComponent} from './components/loading/loading.component';
+import {ConfirmComponent} from './components/confirm/confirm.component';
 
 @NgModule({
   imports: [BrowserModule, FormsModule, HttpClientModule, ReactiveFormsModule, RouterOutlet, AppRoutingModule, StoreModule.forRoot(reducers), StoreDevtoolsModule.instrument({

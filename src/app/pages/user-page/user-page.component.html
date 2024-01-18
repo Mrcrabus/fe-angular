@@ -1,4 +1,4 @@
-<app-loading *ngIf="loading" ></app-loading>
+<app-loading *ngIf="loading"></app-loading>
 
 <div class="flex flex-row justify-between gap-2" *ngIf="postService.posts && !loading">
   <div>
@@ -19,8 +19,7 @@
   <div class="sticky top-2.5 -z-10 border shadow p-2 rounded max-w-xs max-h-[320px]" *ngIf="!loading">
     <p class="font-bold text-2xl text-center">{{user.userName}}</p>
     <img class="rounded border"
-         src="https://www.exscribe.com/wp-content/uploads/2021/08/placeholder-image-person-jpg.jpg" alt="avatar
-">
+         src="https://www.exscribe.com/wp-content/uploads/2021/08/placeholder-image-person-jpg.jpg" alt="avatar">
     <p>Posts: {{postService.posts.length}}</p>
   </div>
 </div>

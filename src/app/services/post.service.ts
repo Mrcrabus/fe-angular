@@ -52,6 +52,13 @@ export class PostService {
     );
   }
 
+  public edit(title: string, description: string): Observable<Post> {
+    return this.http.put<Post>(`${this.baseUrl}/posts`, {
+      title,
+      description
+    });
+  }
+
   public delete(postId: string): Observable<any> {
     return this.http.delete<Post>(`${this.baseUrl}/posts/${postId}`);
   }

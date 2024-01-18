@@ -10,9 +10,9 @@ import {AuthService} from '../../services/auth.service';
   templateUrl: './navigation.component.html'
 })
 export class NavigationComponent implements OnInit {
+  public ModalType = ModalType;
   public userName: string;
   public userId: string;
-
 
   constructor(
     private store: Store<State>,
@@ -33,9 +33,6 @@ export class NavigationComponent implements OnInit {
     this.authService.logout();
   }
 
-
-
-
   public ngOnInit(): void {
     this.store.select(selectUserName).subscribe((userName: string) => {
       this.userName = userName;
@@ -45,5 +42,6 @@ export class NavigationComponent implements OnInit {
     });
   }
 
-  protected readonly ModalType = ModalType;
+
+
 }
